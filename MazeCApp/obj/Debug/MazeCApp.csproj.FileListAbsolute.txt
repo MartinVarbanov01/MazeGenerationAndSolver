@@ -1,0 +1,7 @@
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\MazeCApp.exe.config
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\MazeCApp.exe
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\MazeCApp.pdb
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.exe
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.pdb
