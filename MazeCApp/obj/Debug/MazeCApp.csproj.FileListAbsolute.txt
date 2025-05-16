@@ -5,3 +5,7 @@ D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.csproj.As
 D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.exe
 D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.pdb
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\System.Drawing.Common.dll
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\System.Drawing.Common.pdb
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\bin\Debug\System.Drawing.Common.xml
+D:\Visual Studio Projects\ASP Net\MazeCApp\MazeCApp\obj\Debug\MazeCApp.csproj.Up2Date

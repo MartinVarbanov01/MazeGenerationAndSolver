@@ -15,12 +15,17 @@ namespace MazeCApp
     {
         static void Main(string[] args)
         {
-            int x = 29, y = 120;
-            //int x = 20, y = 80;
-            Maze maze = new Maze(x, y);
-            maze.FillMaze(1, y / 2, "w", 0);
-            maze.PrintMaze();
-            Console.ReadLine();
+            Console.CursorVisible = false;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Black;
+            while (true)
+            {
+                int x = 29, y = 120;
+                //int x = 20, y = 80;
+                Maze maze = new Maze(x, y, 0, 1);
+                maze.FillMaze(1, y / 2, "w", 0);
+                maze.PrintMaze();
+            }
         }
     }
     public class Cell
@@ -76,13 +81,15 @@ namespace MazeCApp
     {
         int heigth;
         int width;
+        int drawSpeed;
+        int solveSpeed;
         private Cell[,] maze;
         Random rnd = new Random();
         HashSet<(int, int)> visited = new HashSet<(int, int)>();
         Stack<(int, int)> path = new Stack<(int, int)>();
         Queue<(int, int)> render = new Queue<(int, int)>();
 
-        public Maze(int heigth, int width)
+        public Maze(int heigth, int width, int drawSpeed, int solveSpeed)
         {
             this.heigth = heigth;
             this.width = width;
@@ -98,6 +105,8 @@ namespace MazeCApp
             maze[0, width / 2].SetWall("s", 1);
             maze[heigth - 1, width / 2].SetWall("w", 1);
             maze[heigth - 1, width / 2].SetWall("s", 1);
+            this.drawSpeed = drawSpeed;
+            this.solveSpeed = solveSpeed;
         }
         public void FillMaze(int x, int y, string pos, int path)
         {
@@ -110,7 +119,8 @@ namespace MazeCApp
                     visited.Contains((x, y - 1)) || y - 1 < 1 ? - 1 : 3,
                     visited.Contains((x, y + 1)) || (y + 1 > width - 2) ? -1 : 1,
                     visited.Contains((x - 1, y)) || x - 1 < 1 ? - 1 : 0,
-                    visited.Contains((x + 1, y)) || x + 1 > heigth - 2 ? -1 : 2
+                    visited.Contains((x + 1, y)) || x + 1 > heigth - 2 ? -1 : 2,
+    
                 };
                 maze[x, y].SetWall(pos, 1);
                 if (x == heigth - 2 && y == width / 2)
@@ -119,16 +129,10 @@ namespace MazeCApp
                 }
                 if (directions.All(d => d == -1))
                 {
-                    //Console.SetCursorPosition(y, x);
-                    //Console.Write(maze[x, y].GetCellValue());
-                    //Thread.Sleep(1);
                     return;
                 }
                 string newPos = GetDirection(x, y, directions);
                 maze[x, y].SetWall(newPos, 1);
-                //Console.SetCursorPosition(x, y);
-                //Console.Write(maze[y, x].GetCellValue());
-                //Thread.Sleep(1);
                 if (newPos == "w")
                 {
                     FillMaze(x - 1, y, "s", path + 1);
@@ -151,7 +155,7 @@ namespace MazeCApp
         {
             while (true)
             {
-                int direction = pos[rnd.Next(4)];
+                int direction = pos[rnd.Next(pos.Count)];
                 if (direction == 0)
                 {
                     return "w";
@@ -175,7 +179,6 @@ namespace MazeCApp
             path.Push((heigth - 1, width / 2));
             SetPathMap();
             path.Push((0, width / 2));
-            long targetFrameTime = 2;
             var sw = new Stopwatch();
             while (render.Count != 0)
             {
@@ -183,21 +186,24 @@ namespace MazeCApp
                 Console.SetCursorPosition(x, y);
                 Console.Write(maze[y, x].GetCellValue());
                 sw.Start();
-                while(sw.ElapsedMilliseconds < targetFrameTime)
+                while (sw.ElapsedMilliseconds < drawSpeed)
                 {
 
                 }
                 sw.Restart();
             }
-            Console.ReadKey();
+            var max = path.Count;
             while (path.Count != 0)
             {
+                var rgb = Rainbow((float)path.Count/ (float)max);
+                Console.Write($"\x1b[38;2;{rgb.R};{rgb.G};{rgb.B}m");
                 (int y, int x) = path.Pop();
                 Console.SetCursorPosition(x, y);
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(maze[y, x].GetCellValue());
-                Thread.Sleep(10);
+                Thread.Sleep(solveSpeed);
             }
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Black;
         }
         private void SetPathMap()
         {
@@ -246,6 +252,40 @@ namespace MazeCApp
                 {
                     break;
                 }
+            }
+        }
+        public static Color Rainbow(float progress)
+        {
+            float div = (Math.Abs(progress % 1) * 6);
+            int ascending = (int)((div % 1) * 255);
+            int descending = 255 - ascending;
+
+            switch ((int)div)
+            {
+                case 0:
+                    return new Color( 255, ascending, 0 );
+                case 1:
+                    return new Color(descending, 255, 0 );
+                case 2:
+                    return new Color(0, 255, ascending );
+                case 3:
+                    return new Color(0, descending, 255 );
+                case 4:
+                    return new Color(ascending, 0, 255 );
+                default: // case 5:
+                    return new Color(255, 0, descending );
+            }
+        }
+        public class Color
+        {
+            public int R;
+            public int G;
+            public int B;
+            public Color(int r, int g, int b) 
+            {
+                this.R = r;
+                this.G = g;
+                this.B = b;
             }
         }
     }
