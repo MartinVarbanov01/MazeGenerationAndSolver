@@ -17,16 +17,17 @@ namespace MazeCApp
         {
             Console.CursorVisible = false;
             //Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.Black;
+            //Console.ForegroundColor = ConsoleColor.Black;
             while (true)
             {
-                int x = 29, y = 120;
+                int x = 28, y = 119;
                 //int x = 50, y = 50;
                 Maze maze = new Maze(x, y, 1, 1);
-                maze.FillMaze(1, y / 2, "w", 0);
+                maze.FillMaze(0, y / 2, "w", 0);
                 //maze.PrintMazeInstant();
                 maze.PrintMazeSlow();
                 maze.SolveMaze();
+                Console.ReadKey();
             }
         }
     }
@@ -103,10 +104,10 @@ namespace MazeCApp
                     maze[i, j] = new Cell(); // Initialize each cell
                 }
             }
-            maze[0, width / 2].SetWall("w", 1);
+            /*maze[0, width / 2].SetWall("w", 1);
             maze[0, width / 2].SetWall("s", 1);
             maze[heigth - 1, width / 2].SetWall("w", 1);
-            maze[heigth - 1, width / 2].SetWall("s", 1);
+            maze[heigth - 1, width / 2].SetWall("s", 1);*/
             this.drawSpeed = drawSpeed;
             this.solveSpeed = solveSpeed;
         }
@@ -118,14 +119,14 @@ namespace MazeCApp
             while (true)
             {
                 var directions = new List<int>() {
-                    visited.Contains((x, y - 1)) || y - 1 < 1 ? - 1 : 3,
-                    visited.Contains((x, y + 1)) || (y + 1 > width - 2) ? -1 : 1,
-                    visited.Contains((x - 1, y)) || x - 1 < 1 ? - 1 : 0,
-                    visited.Contains((x + 1, y)) || x + 1 > heigth - 2 ? -1 : 2,
+                    visited.Contains((x, y - 1)) || y - 1 < 0 ? - 1 : 3,
+                    visited.Contains((x, y + 1)) || (y + 1 > width - 1) ? -1 : 1,
+                    visited.Contains((x - 1, y)) || x - 1 < 0 ? - 1 : 0,
+                    visited.Contains((x + 1, y)) || x + 1 > heigth - 1 ? -1 : 2,
 
                 };
                 maze[x, y].SetWall(pos, 1);
-                if (x == heigth - 2 && y == width / 2)
+                if (x == heigth - 1 && y == width / 2)
                 {
                     maze[x, y].SetWall("s", 1);
                 }
@@ -178,7 +179,7 @@ namespace MazeCApp
         }
         public void PrintMazeSlow()
         {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
             //path.Push((heigth - 1, width / 2));
             SetPathMap();
             //path.Push((0, width / 2));
@@ -195,7 +196,7 @@ namespace MazeCApp
                 }
                 sw.Restart();
             }
-            Console.BackgroundColor = ConsoleColor.Black;
+            //Console.BackgroundColor = ConsoleColor.Black;
         }
         public void PrintMazeInstant()
         {
@@ -221,12 +222,12 @@ namespace MazeCApp
                 Console.Write(maze[y, x].GetCellValue());
                 Thread.Sleep(solveSpeed);
             }
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
         }
         private void SetPathMap()
         {
             int x = width / 2;
-            int y = heigth - 2;
+            int y = heigth - 1;
             while (true)
             {
                 path.Push((y, x));
