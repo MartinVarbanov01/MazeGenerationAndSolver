@@ -272,7 +272,7 @@ namespace MazeCApp
                 }
             }
         }
-        public static Color Rainbow(float progress)
+        private static Color Rainbow(float progress)
         {
             float div = (Math.Abs(progress % 1) * 6);
             int ascending = (int)((div % 1) * 255);
