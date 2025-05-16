@@ -20,11 +20,11 @@ namespace MazeCApp
             Console.ForegroundColor = ConsoleColor.Black;
             while (true)
             {
-                int x = 29, y = 120;
-                //int x = 20, y = 80;
-                Maze maze = new Maze(x, y, 0, 1);
-                maze.FillMaze(1, y / 2, "w", 0);
-                maze.PrintMaze();
+                    int x = 29, y = 120;
+                    //int x = 20, y = 80;
+                    Maze maze = new Maze(x, y, 1, 1);
+                    maze.FillMaze(1, y / 2, "w", 0);
+                    maze.PrintMaze();
             }
         }
     }
@@ -119,6 +119,7 @@ namespace MazeCApp
                     visited.Contains((x, y - 1)) || y - 1 < 1 ? - 1 : 3,
                     visited.Contains((x, y + 1)) || (y + 1 > width - 2) ? -1 : 1,
                     visited.Contains((x - 1, y)) || x - 1 < 1 ? - 1 : 0,
+                    visited.Contains((x - 1, y)) || x - 1 < 1 ? - 1 : 0,
                     visited.Contains((x + 1, y)) || x + 1 > heigth - 2 ? -1 : 2,
     
                 };
@@ -176,9 +177,9 @@ namespace MazeCApp
         }
         public void PrintMaze()
         {
-            path.Push((heigth - 1, width / 2));
+            //path.Push((heigth - 1, width / 2));
             SetPathMap();
-            path.Push((0, width / 2));
+            //path.Push((0, width / 2));
             var sw = new Stopwatch();
             while (render.Count != 0)
             {
