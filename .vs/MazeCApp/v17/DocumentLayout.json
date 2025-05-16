@@ -5,6 +5,12 @@
     {
       "AbsoluteMoniker": "D:0:0:{941E7AD3-A3F4-4DC2-9045-4F938F3D373A}|MazeCApp\\MazeCApp.csproj|d:\\visual studio projects\\asp net\\mazecapp\\mazecapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{941E7AD3-A3F4-4DC2-9045-4F938F3D373A}|MazeCApp\\MazeCApp.csproj|solutionrelative:mazecapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|MazeCApp||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{941E7AD3-A3F4-4DC2-9045-4F938F3D373A}|MazeCApp\\MazeCApp.csproj|d:\\visual studio projects\\asp net\\mazecapp\\mazecapp\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +20,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MazeCApp",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\ASP Net\\MazeCApp\\MazeCApp\\MazeCApp.csproj",
+              "RelativeDocumentMoniker": "MazeCApp\\MazeCApp.csproj",
+              "ToolTip": "D:\\Visual Studio Projects\\ASP Net\\MazeCApp\\MazeCApp\\MazeCApp.csproj",
+              "RelativeToolTip": "MazeCApp\\MazeCApp.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-16T11:58:10.581Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +42,7 @@
               "RelativeDocumentMoniker": "MazeCApp\\Program.cs",
               "ToolTip": "D:\\Visual Studio Projects\\ASP Net\\MazeCApp\\MazeCApp\\Program.cs",
               "RelativeToolTip": "MazeCApp\\Program.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAmwMYAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T09:29:54.999Z",
               "EditorCaption": ""
