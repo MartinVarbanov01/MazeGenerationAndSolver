@@ -196,7 +196,7 @@ namespace MazeCApp
             var max = path.Count;
             while (path.Count != 0)
             {
-                var rgb = Rainbow((float)path.Count/ (float)max);
+                var rgb = Rainbow(((float)path.Count/ (float)max)*2);
                 Console.Write($"\x1b[38;2;{rgb.R};{rgb.G};{rgb.B}m");
                 (int y, int x) = path.Pop();
                 Console.SetCursorPosition(x, y);
